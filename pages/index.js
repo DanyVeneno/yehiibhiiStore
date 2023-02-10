@@ -9,6 +9,7 @@ import { Store } from "../utils/Store";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
+import Img from "next/img";
 
 export default function Home({ products, featuredProducts }) {
   const { state, dispatch } = useContext(Store);
@@ -33,13 +34,13 @@ export default function Home({ products, featuredProducts }) {
           <div key={product._id}>
             <Link href={`/product/${product.slug}`} passHref>
               <a className='flex'>
-                <img src={product.banner} alt={product.name} />
+                <Img src={product.banner} alt={product.name} />
               </a>
             </Link>
           </div>
         ))}
       </Carousel>
-      <h2 className='h2 my-4'>Latest Products</h2>
+      <h2 className='h2 my-4'>Productos de temporada</h2>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
         {products.map((product) => (
           <ProductItem
@@ -59,7 +60,7 @@ export async function getServerSideProps() {
   return {
     props: {
       featuredProducts: featuredProducts.map(db.convertDocToObj),
-      products: products.map(db.convertDocToObj),
-    },
+      products: products.map(db.convertDocToObj)
+    }
   };
 }
