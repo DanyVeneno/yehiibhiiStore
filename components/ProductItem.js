@@ -1,5 +1,5 @@
 import Link from "next/link";
-//import Img from "next/Img";
+import Image from "next/image";
 import React from "react";
 
 export default function ProductItem({ product, addToCartHandler }) {
@@ -7,7 +7,7 @@ export default function ProductItem({ product, addToCartHandler }) {
     <div className='card  shadow-lg shadow-cyan-500/50 rounded-md'>
       <Link href={`/product/${product.slug}`}>
         <a>
-          <img
+          <Image
             src={product.image}
             alt={product.name}
             className='rounded-md shadow object-cover h-64 w-full'
